@@ -30,7 +30,7 @@ else
 fi
 
 if [[ "$@" == *"commit"* ]]; then
-    ARGS="${ARGS} --rate 1 --Xperform "
+    ARGS="${ARGS} --rate 1 --perform "
 fi
 
 
