@@ -45,12 +45,16 @@ fi
 echo "=== cleaning slack messages =============================="
 echo "remove before ${RETAIN_DATE}"
 echo "arguments: ${ARGS}"
+echo "started at: $(date)"
 echo "----------------------------------------------------------"
 
 #slack-cleaner --help
 echo "slack-cleaner --token ****** --before ${RETAIN_DATE} ${ARGS}"
 slack-cleaner --token ${SLACK_TOKEN} --before ${RETAIN_DATE} ${ARGS}
 
+echo ""
+echo "finished at: $(date)"
 echo "----------------------------------------------------------"
 
 exit 0
+
