@@ -1,0 +1,15 @@
+# The script dh_slack_cleaner in docker container slack_cleaner will run every morning
+# from 7:00 AM for each slack channel to remove old slack messages and bots
+
+#crontab sytax:
+#MI HH DOM MM DOW user command
+
+# NOTE THAT IN ORDER TO PERFORM THE ACTUAL DELETE THE PARAM --commit MUST BE ADDED TO EACH LINE!!!
+
+
+# notifications (bot)
+00 07 * * * root docker run --name slack-cleaner --rm --env SLACK_TOKEN=$(cat /etc/slack-token) dh-slack-cleaner 60 notifications bot >> /var/log/slack-cleaner_notifications_$$.log 2>&1
+
+# developers-app-msg (bot)
+05 07 * * * root docker run --name slack-cleaner --rm --env SLACK_TOKEN=$(cat /etc/slack-token) dh-slack-cleaner 60 developers-app-msg bot --private >> /var/log/slack-cleaner_developers-app-msg_$$.log 2>&1
+
